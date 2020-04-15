@@ -1,0 +1,102 @@
+{% extends 'main/wrapper.html' %}
+{% load staticfiles %}
+{% block title %}
+    Main page
+{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <div class="card bg-light mb-3 card-shadow">
+                    <div class="card-header">
+                        <h1>Time in Gomel: <span id="time"></span></h1>
+                    </div>
+                </div>
+                <div class="card bg-dark mb-3 text-white card-shadow">
+                    <div class="card-header">
+                        <img src="{% static 'main/img/cf.png' %}" alt="CF logo" class="cf-logo">
+                    </div>
+                    <div class="card-body" style="padding-bottom: 0;padding-top: 0;">
+                        <div class="row">
+                            <table class="table table-striped table-dark">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in contests %}
+                                    <tr>
+                                        <td>{{i.name}}</td>
+                                        <td>{{i.date}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6">
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="card text-white bg-danger mb-3 card-shadow" style="max-width: 18rem;">
+                                <div class="card-body">
+                                    <i class="fas fa-dollar-sign currency d-flex justify-content-center"></i>
+                                    <p class="currency-value d-flex justify-content-center">
+                                        {{ usdc }} USD = {{ usd }} BYN
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card text-white bg-success mb-3 card-shadow" style="max-width: 18rem;">
+                                <div class="card-body">
+                                    <i class="fas fa-euro-sign currency d-flex justify-content-center"></i>
+                                    <p class="currency-value d-flex justify-content-center">
+                                        {{ eurc }} EUR = {{ eur }} BYN
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card text-white bg-primary mb-3 card-shadow" style="max-width: 18rem;">
+                                <div class="card-body">
+                                    <i class="fas fa-ruble-sign currency d-flex justify-content-center"></i>
+                                    <p class="currency-value d-flex justify-content-center">
+                                        {{ rubc }} RUB = {{ rub }} BYN
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="card text-white bg-warning mb-3 card-shadow" style="max-width: 18rem;">
+                                <div class="card-body">
+                                    <i class="fas fa-hryvnia currency d-flex justify-content-center"></i>
+                                    <p class="currency-value d-flex justify-content-center">
+                                        {{ uahc }} UAH = {{ uah }} BYN
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block scripts %}
+    <script>
+
+        function UpdateTime(){
+            var now = new Date().toLocaleTimeString();
+            $("#time").html(now);  
+            setTimeout(UpdateTime, 1e3);
+        };
+
+        $(document).ready(()=>{
+            UpdateTime();
+        });
+
+    </script>
+{% endblock %}
