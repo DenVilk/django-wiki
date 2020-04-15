@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=denvilk
 Group=www-data
-WorkingDirectory=dbms_template_path/src
-ExecStart=dbms_template_path/env/bin/gunicorn --workers 3 --bind unix:dbms_template_path/gunicorn/wiki.sock config.wsgi:application --access-logfile dbms_template_path/gunicorn/access.log --error-logfile dbms_template_path/gunicorn/error.log
+WorkingDirectory=/home/denvilk/code/django-wiki/src
+ExecStart=/home/denvilk/code/django-wiki/env/bin/gunicorn --workers 3 --bind unix:/home/denvilk/code/django-wiki/gunicorn/wiki.sock config.wsgi:application --access-logfile /home/denvilk/code/django-wiki/gunicorn/access.log --error-logfile /home/denvilk/code/django-wiki/gunicorn/error.log
 Restart=on-failure
 
 [Install]
