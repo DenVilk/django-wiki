@@ -19,4 +19,7 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('<Folder>/', views.folder, name='folder'),
+    path('<File>', views.files, name='files'),
+    path('<Folder>/<File>', views.finf, name='file in folder'),
 ]

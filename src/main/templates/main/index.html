@@ -6,18 +6,6 @@
 {% block content %}
     {{text|safe}}
 {% endblock %}
+
 {% block scripts %}
-    <script>
-
-        function UpdateTime(){
-            var now = new Date().toLocaleTimeString();
-            $("#time").html(now);  
-            setTimeout(UpdateTime, 1e3);
-        };
-
-        $(document).ready(()=>{
-            UpdateTime();
-        });
-
-    </script>
 {% endblock %}

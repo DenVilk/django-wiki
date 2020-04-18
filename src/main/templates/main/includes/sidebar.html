@@ -1,0 +1,34 @@
+<div class="sidebar">
+    <div class="header">
+        <a href="/" class="justify-content-center d-flex">HomeWiki</a>
+    </div>
+    <hr class="underline">
+    <div class="tools">
+        <div class="d-flex justify-content-center tools-icons">
+            <a href="">
+                <i class="fas fa-arrow-left"></i>
+            </a>
+            <a href="">
+                <i class="fas fa-folder-plus"></i>
+            </a>
+            <a href="">
+                <i class="far fa-file-alt"></i>
+            </a>
+        </div>
+    </div>
+    <hr class="underline">
+    <div class="folders">
+        <ul>
+            {% for i in folders %}
+                <li><i class="fas fa-folder"></i> {{i}}</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- <div class="files">
+        <ul>
+            {% for i in files %}
+                <li><i class="far fa-file"></i> {{i}}</li>
+            {% endfor %}
+        </ul>
+    </div> -->
+</div>
