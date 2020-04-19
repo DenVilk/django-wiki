@@ -1,0 +1,10 @@
+{% extends 'main/test.html' %}
+
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.name }}
+    {{ form.parent }}
+    <button class="btn btn-primary" type='submit'>Send</button>
+</form>
+{% endblock %}

@@ -1,0 +1,36 @@
+blockquote {
+    margin: 0;
+    background: #F0F0F1;
+    color: #333334;
+    padding: 20px 30px;
+    position: relative;
+    border-left: 35px solid #DFDEDE;
+    font-family: 'Lato', sans-serif;
+}
+
+blockquote:before {
+    content: "\201C";
+    font-family: serif;
+    position: absolute;
+    left: -29px;
+    top: 5px;
+    color: #BCBCBC;
+    font-size: 50px;
+    text-shadow: 1px 2px 0 white;
+}
+
+blockquote p {
+    margin: 0 0 16px;
+    font-size: 20px;
+    letter-spacing: .05em;
+    line-height: 1.4;
+}
+
+blockquote cite {
+    font-style: normal;
+    font-weight: 300;
+}
+
+code{
+    background-color: #F0F0F1;
+}

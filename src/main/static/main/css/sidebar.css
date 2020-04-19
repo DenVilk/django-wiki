@@ -5,7 +5,7 @@
     color: #f1f1f1;
     position: fixed;
     top:0;
-    left 0;
+    left: 0;
 }
 
 .page{
@@ -63,7 +63,20 @@ ul{
     color:white;
 }
 
+a{
+    color: white;
+}
+
 a:hover{
     color: #cecece;
     text-decoration: none;
+}
+
+.toolbox > a{
+    color: #343A40;
+    font-size: 25px;
+}
+
+.file-content{
+    padding: 20px;
 }

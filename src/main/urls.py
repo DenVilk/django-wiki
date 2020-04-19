@@ -19,7 +19,9 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
-    path('<Folder>/', views.folder, name='folder'),
-    path('<File>', views.files, name='files'),
-    path('<Folder>/<File>', views.finf, name='file in folder'),
+    path('new/new_folder', views.new_folder, name='new folder'),
+    path('new/new_file', views.new_file, name='new file'),
+    path('<FolderName>/', views.folder, name='folder'),
+    path('<FileName>', views.files, name='files'),
+    path('<FolderName>/<FileName>', views.finf, name='file in folder'),
 ]
