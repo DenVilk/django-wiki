@@ -21,6 +21,7 @@ urlpatterns = [
     path('', views.index, name='index'),
     path('new/new_folder', views.new_folder, name='new folder'),
     path('new/new_file', views.new_file, name='new file'),
+    path('edit/<FileName>', views.edit_file, name='edit file'),
     path('<FolderName>/', views.folder, name='folder'),
     path('<FileName>', views.files, name='files'),
     path('<FolderName>/<FileName>', views.finf, name='file in folder'),

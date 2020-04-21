@@ -1,6 +1,5 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponseRedirect
-from markdown import markdown
 from .forms import *
 from .models import *
 
@@ -18,7 +17,7 @@ def folder(request, FolderName):
     Parent = get_object_or_404(Folder, name = FolderName)
     Folders = Folder.objects.filter(parent = Parent)
     Files = File.objects.filter(parent = Parent)
-    return render(request, 'main/info.html', {'text': markdown('FOLDER'), 'folders': Folders, 'files': Files, 'parent': Parent.parent})
+    return render(request, 'main/info.html', {'text': markdown('FOLDER'), 'folders': Folders, 'files': Files, 'parent': Parent.parent, 'cur_parent': Parent})
 
 def files(request, FileName):
     Folders = Folder.objects.filter(parent = None)
@@ -33,6 +32,10 @@ def finf(request, FolderName, FileName):
     print(FileName)
     req_file = get_object_or_404(File, name = FileName, parent = Parent)
     return render(request, 'main/info.html', {'text': markdown(req_file.content), 'folders': Folders, 'files': Files, 'file': req_file, 'parent': req_file.parent})
+
+def edit_file(request, FileName):
+    req_file = get_object_or_404(File, name = FileName)
+    return render(request, 'main/edit.html', {'file' : req_file})
 
 def new_folder(request):
     if (request.method == 'POST'):

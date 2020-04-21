@@ -1,22 +1,13 @@
 {% extends 'main/test.html' %}
 
 {% block title %}
-    {% if file %}
-        Document: {{ file.name }}
-    {% else %}
-        Folder: 
-        {% if cur_parent %} 
-            {{ cur_parent.name }}
-        {% else %}  
-            /
-        {% endif %}
-    {% endif %}
+    Edit Document: {{ file.name }}
 {% endblock %}
 
 {% block header %}
     {% if file %}
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand">{{ file.name }}</a>
+            <a class="navbar-brand">Edit: {{ file.name }}</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
