@@ -30,6 +30,7 @@
             {% endfor %}
         </ul>
     </div>
+    {% if not form or new %}
     <div class="files">
         <ul>
             {% for i in files %}
@@ -37,4 +38,5 @@
             {% endfor %}
         </ul>
     </div>
+    {% endif %}
 </div>

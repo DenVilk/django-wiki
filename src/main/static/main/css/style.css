@@ -27,3 +27,17 @@
 .disp-inline{
     display: inline-block;
 }
+
+.edit-form{
+    width: 100%;
+    height: 98% !important;
+}
+
+.new-form{
+    padding: 20px;
+    min-height: calc(100% - 40px) !important;
+}
+
+.new-content{
+    min-height: 100% !important;
+}

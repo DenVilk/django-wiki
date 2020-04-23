@@ -35,9 +35,25 @@ def finf(request, FolderName, FileName):
 
 def edit_file(request, FileName):
     req_file = get_object_or_404(File, name = FileName)
-    return render(request, 'main/edit.html', {'file' : req_file})
+
+    Folders = Folder.objects.filter(parent = req_file.parent)
+    Files = File.objects.filter(parent = req_file.parent)
+
+    if request.method == 'POST':
+        form = EditFileForm(request.POST)
+        if form.is_valid():
+            req_file.content = form.cleaned_data['content']
+            req_file.save()
+
+            return HttpResponseRedirect(request.path)
+    else:
+        form = EditFileForm(initial={'content' : req_file.content})
+    return render(request, 'main/edit.html', {'folders': Folders, 'files': Files,'form' : form, 'file' : req_file})
 
 def new_folder(request):
+    Folders = Folder.objects.filter(parent = None)
+    Files = File.objects.filter(parent = None)
+
     if (request.method == 'POST'):
         form = FolderForm(request.POST)
         if (form.is_valid()):
@@ -46,13 +62,16 @@ def new_folder(request):
             newFolder.name = form.cleaned_data['name']
             newFolder.parent = form.cleaned_data['parent']
             newFolder.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(f'/{newFolder.name}/')
     else:
         form = FolderForm()
     
-    return render(request, 'main/add_folder.html', { 'form':form })
+    return render(request, 'main/add_folder.html', { 'form':form , 'files': Files, 'folders': Folders, 'new': True})
 
 def new_file(request):
+    Folders = Folder.objects.filter(parent = None)
+    Files = File.objects.filter(parent = None)
+
     if (request.method == 'POST'):
         form = FileForm(request.POST)
         if (form.is_valid()):
@@ -62,8 +81,8 @@ def new_file(request):
             newFile.parent = form.cleaned_data['parent']
             newFile.content = form.cleaned_data['content']
             newFile.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect(f'/{newFile.parent.name}/{newFile.name}')
     else:
         form = FileForm()
     
-    return render(request, 'main/add_file.html', { 'form':form })
+    return render(request, 'main/add_file.html', { 'form':form , 'files': Files, 'folders': Folders, 'new': True})

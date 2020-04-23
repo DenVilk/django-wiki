@@ -71,6 +71,10 @@ a:hover{
     text-decoration: none;
 }
 
+.toolbox{
+    padding: 3px 0;
+}
+
 .toolbox > a{
     color: #343A40;
     font-size: 25px;

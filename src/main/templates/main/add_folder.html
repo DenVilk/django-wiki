@@ -1,10 +1,12 @@
 {% extends 'main/test.html' %}
 
 {% block content %}
-<form method="POST">
+<form method="POST" class="new-form">
     {% csrf_token %}
+    <h3>Folder name:</h3>
     {{ form.name }}
+    <h3>Folder:</h3>
     {{ form.parent }}
-    <button class="btn btn-primary" type='submit'>Send</button>
+    <button class="btn btn-primary mt-3" type='submit'>Send</button>
 </form>
 {% endblock %}
